@@ -1,18 +1,12 @@
-import Stack from "../src/Stack.js";
-
+import { reverseText } from "../src/Lista1.js";
 let s;
 
 
 describe("Q1. Palavra de forma invertida", () => {
 
-    beforeEach(() => {
-        s = new Stack();
+    test("Palavra de forma invertida", () => {
+        expect(reverseText("ABACAXI")).toBe("IXACABA");
+        expect(reverseText("BANANA")).toBe("ANANAB");
     });
-
-    test("Pilha recém-criada deve estar vazia", () => {
-        expect(s.isEmpty()).toBe(true);
-        expect(s.getTop()).toBeUndefined();
-    });
-
 
 });

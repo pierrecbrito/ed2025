@@ -220,8 +220,13 @@ describe("Q3. Troco do topo com a base", () => {
 describe("Q4. Decimal para binário", () => {
 
 
-    test("O 10 deve ser 1010", () => {
+    test("Testes normais", () => {
+        expect(decToBi(5)).toBe("101");
         expect(decToBi(10)).toBe("1010");
+        expect(decToBi(13)).toBe("1101");
+        expect(decToBi(19)).toBe("10011");
+        expect(decToBi(30)).toBe("11110");
+        expect(decToBi(42)).toBe("101010");
     });
 
 });

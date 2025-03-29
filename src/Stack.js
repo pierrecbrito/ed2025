@@ -46,6 +46,16 @@ class Stack {
         this.top = undefined;
     }
 
+    topToBase() {
+        const stackAux = new Stack();
+        
+        while(!this.isEmpty()) {
+            stackAux.push(this.pop());
+        }
+
+        return stackAux;
+    }
+
     getSize() {
         return this.stack.length;
     }

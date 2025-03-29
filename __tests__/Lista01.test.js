@@ -1,4 +1,5 @@
 import { reverseText } from "../src/Lista1.js";
+import Stack from "../src/Stack.js";
 import  TwoStacksOneArray  from "../src/TwoStacksOneArray.js"
 
 let s;
@@ -196,3 +197,22 @@ describe("Q2. 2 pilhas, 1 array", () => {
 });
 
 
+describe("Q3. Troco do topo com a base", () => {
+
+    beforeEach(() => {
+        s = new Stack();
+    });
+
+    test("O top da stack deve virar a base", () => {
+        s.push(5);
+        s.push(4);
+        s.push(3);
+        s.push(2);
+        s.push(1);
+
+        s = s.topToBase();
+        expect(s.getTop()).toBe(5);
+    });
+
+
+});

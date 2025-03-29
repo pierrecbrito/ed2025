@@ -7,7 +7,7 @@ class Stack {
 
     push(newItem) {
         if ( this.size == this.stack.length) throw new Error("Stack overflow");
-        if ( !newItem ) throw new Error("Novo item inválido");
+        if ( newItem == undefined || newItem == null) throw new Error("Novo item inválido");
 
         this.stack.push(newItem);
         this.top = newItem;

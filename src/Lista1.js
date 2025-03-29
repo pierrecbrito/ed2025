@@ -13,3 +13,20 @@ export const reverseText = (text) => {
     return reversedChars.join(''); 
 }
 
+export const decToBi = (dec) => {
+    const stack = new Stack(25);
+
+    while(dec != 1 && dec != 0) {
+        stack.push(dec % 2);
+        dec = Math.floor(dec / 2);
+    }
+
+    stack.push(dec);
+    
+    let binary = "";
+    while (!stack.isEmpty()) {
+        binary += stack.pop()
+    }
+    
+    return binary;
+}

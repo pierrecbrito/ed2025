@@ -1,4 +1,4 @@
-import { reverseText } from "../src/Lista1.js";
+import { reverseText, decToBi } from "../src/Lista1.js";
 import Stack from "../src/Stack.js";
 import  TwoStacksOneArray  from "../src/TwoStacksOneArray.js"
 
@@ -214,5 +214,14 @@ describe("Q3. Troco do topo com a base", () => {
         expect(s.getTop()).toBe(5);
     });
 
+
+});
+
+describe("Q4. Decimal para binário", () => {
+
+
+    test("O 10 deve ser 1010", () => {
+        expect(decToBi(10)).toBe("1010");
+    });
 
 });

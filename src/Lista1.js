@@ -30,3 +30,26 @@ export const decToBi = (dec) => {
     
     return binary;
 }
+
+export const verifySequence = (sequence) => {
+    const sequenceArray = sequence.split('');
+    const possibleChars = "()[]".split('');
+    const closingChars = ")]".split('');
+    const stack = new Stack(Math.ceil(sequence.length / 2));
+    let result = true;
+
+    sequenceArray.forEach(c => {
+        if (!possibleChars.includes(c)) result = false;
+
+        if (closingChars.includes(c)) {
+            let top = stack.pop()
+            if((c == ']' && top != '[') || (c == ')' && top != '(')) {
+                result = false;
+            }
+        } else {
+            stack.push(c);
+        } 
+    });
+
+    return result;
+}

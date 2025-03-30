@@ -1,4 +1,4 @@
-import { reverseText, decToBi } from "../src/Lista1.js";
+import { reverseText, decToBi, verifySequence } from "../src/Lista1.js";
 import Stack from "../src/Stack.js";
 import  TwoStacksOneArray  from "../src/TwoStacksOneArray.js"
 
@@ -227,6 +227,17 @@ describe("Q4. Decimal para binário", () => {
         expect(decToBi(19)).toBe("10011");
         expect(decToBi(30)).toBe("11110");
         expect(decToBi(42)).toBe("101010");
+    });
+
+});
+
+describe("Q5. Sequência de colchetes e parênteses", () => {
+
+
+    test("Testes normais", () => {
+        expect(verifySequence('[()[()]]()')).toBe(true);
+        expect(verifySequence('(()]')).toBe(false);
+        expect(verifySequence('(()a]')).toBe(false);
     });
 
 });

@@ -1,6 +1,7 @@
-import { reverseText, decToBi, verifySequence } from "../src/Lista1.js";
+import { reverseText, decToBi, verifySequence, shutingYard } from "../src/Lista1.js";
 import Stack from "../src/Stack.js";
-import  TwoStacksOneArray  from "../src/TwoStacksOneArray.js"
+import TwoStacksOneArray  from "../src/TwoStacksOneArray.js";
+
 
 let s;
 
@@ -238,6 +239,22 @@ describe("Q5. Sequência de colchetes e parênteses", () => {
         expect(verifySequence('[()[()]]()')).toBe(true);
         expect(verifySequence('(()]')).toBe(false);
         expect(verifySequence('(()a]')).toBe(false);
+    });
+
+});
+
+
+describe("Q6. Expressão para RPN", () => {
+
+
+    test("Testes da lista", () => {
+        expect(shutingYard('3+4')).toBe('34+');
+        expect(shutingYard('3-4+5')).toBe('34-5+');
+        expect(shutingYard('((a+b)*(z+x))')).toBe('ab+zx+*');
+        expect(shutingYard('((a+t)*((b+(a+c))^(c+d)))')).toBe('at+bac++cd+^*');
+        expect(shutingYard('a+b*c-d')).toBe('abc*+d-');
+        expect(shutingYard('(a+b)+c/d')).toBe('ab+cd/+');
+        expect(shutingYard('a*b-(c-d)+e')).toBe('ab*cd--e+');
     });
 
 });

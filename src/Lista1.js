@@ -53,3 +53,49 @@ export const verifySequence = (sequence) => {
 
     return result;
 }
+
+const verifyPrecedence = (op1, op2) => {
+    const weightOperators = {
+        "-": 1,
+        "+": 1,
+        "*": 2,
+        "/": 2,
+        "^": 3
+    }
+
+    return weightOperators[op1] >= weightOperators[op2];
+}
+
+export const shutingYard = (expression) => {
+    const stack = new Stack(10);
+    let out = "";
+
+    const numbers = "0123456789abcdefghijklmnopqrstuvwxyz";
+    const operators = "/*-+^";
+
+    expression.split('').forEach(e => {
+        if(numbers.includes(e)) out += e;
+        if(operators.includes(e)) { 
+            while (!stack.isEmpty() && stack.getTop() !== '(' && verifyPrecedence(stack.getTop(), e)) {
+                out += stack.pop();
+            }
+            stack.push(e);
+        }
+        if(e == '(') stack.push(e);
+        if(e == ')') {
+            while (!stack.isEmpty() && stack.getTop() !== '(') {
+                out += stack.pop();
+            }
+            if (!stack.isEmpty()) stack.pop();
+        }
+    })
+
+    while (!stack.isEmpty()) {
+        const top = stack.pop();
+        if (top !== '(' && top !== ')') {
+            out += top;
+        }
+    }
+
+    return out;
+}

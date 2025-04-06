@@ -1,6 +1,7 @@
 import { reverseText, decToBi, verifySequence, shutingYard, removeDuplicates } from "../src/Lista1.js";
 import Stack from "../src/Stack.js";
 import TwoStacksOneArray  from "../src/TwoStacksOneArray.js";
+import StackPlate from "../src/StackPlate.js";
 
 
 let s;
@@ -256,10 +257,6 @@ describe("Q6. Expressão para RPN", () => {
 });
 
 describe("Q7. Remover duplicados", () => {
-    /*
-    Entrada: [3, 7, 3, 2, 7, 1, 4, 2]
-    Saída: [3, 7, 2, 1, 4]
-    */
 
     beforeEach(() => {
         s = new Stack(15);
@@ -287,5 +284,37 @@ describe("Q7. Remover duplicados", () => {
         s.push(3);
         expect(removeDuplicates(s)).toBe('[2, 1, 3]');
     });
+
+});
+
+describe("Q8. Stack Plate", () => {
+
+    beforeEach(() => {
+        s = new StackPlate();
+    });
+
+
+    test("Stack Plate", () => {
+        s.push(3);
+        s.push(7);
+        s.push(3);
+        s.push(2);
+        s.push(7);
+        s.push(1);
+        s.push(4);
+        s.push(2);
+        expect(s.toString()).toBe('{[3, 7, 3], [2, 7, 1], [4, 2]}');
+    });
+
+    test("Testes da lista", () => {
+        s.push(5);
+        s.push(10);
+        s.push(15);
+        s.push(20);
+        s.pop();
+        s.pop();
+        expect(s.toString()).toBe('{[5, 10]}');
+    });
+
 
 });

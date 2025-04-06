@@ -38,7 +38,7 @@ class Stack {
     }
 
     toString() {
-        return `[${this.stack.join(',')}]`;
+        return `[${this.stack.join(', ')}]`;
     }
 
     clear() {
@@ -58,6 +58,10 @@ class Stack {
 
     getSize() {
         return this.stack.length;
+    }
+
+    includes(element) {
+        return this.stack.includes(element);
     }
 }
 

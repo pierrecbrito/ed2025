@@ -99,3 +99,68 @@ export const shutingYard = (expression) => {
 
     return out;
 }
+
+export const removeDuplicates = (stack) => {
+    const tempStack = new Stack(30);
+    const allElements = new Stack(30);
+    
+    while (!stack.isEmpty()) {
+        let element = stack.pop();
+        allElements.push(element);
+        
+        let isDuplicate = false;
+        const checkStack = new Stack(30);
+        
+        while (!tempStack.isEmpty()) {
+            let tempElement = tempStack.pop();
+            checkStack.push(tempElement);
+            if (tempElement === element) {
+                isDuplicate = true;
+            }
+        }
+        
+        while (!checkStack.isEmpty()) {
+            tempStack.push(checkStack.pop());
+        }
+        
+        if (!isDuplicate) {
+            tempStack.push(element);
+        }
+    }
+    
+    const finalStack = new Stack(30);
+    while (!allElements.isEmpty()) {
+        let element = allElements.pop();
+        const checkStack = new Stack(30);
+        let shouldInclude = false;
+        
+        while (!tempStack.isEmpty()) {
+            let tempElement = tempStack.pop();
+            checkStack.push(tempElement);
+            if (tempElement === element) {
+                shouldInclude = true;
+            }
+        }
+        
+        // Restaurar tempStack
+        while (!checkStack.isEmpty()) {
+            tempStack.push(checkStack.pop());
+        }
+        
+        if (shouldInclude) {
+            finalStack.push(element);
+            const removeStack = new Stack(30);
+            while (!tempStack.isEmpty()) {
+                let tempElement = tempStack.pop();
+                if (tempElement !== element) {
+                    removeStack.push(tempElement);
+                }
+            }
+            while (!removeStack.isEmpty()) {
+                tempStack.push(removeStack.pop());
+            }
+        }
+    }
+    
+    return finalStack.toString();
+}

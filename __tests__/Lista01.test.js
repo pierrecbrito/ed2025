@@ -1,4 +1,4 @@
-import { reverseText, decToBi, verifySequence, shutingYard } from "../src/Lista1.js";
+import { reverseText, decToBi, verifySequence, shutingYard, removeDuplicates } from "../src/Lista1.js";
 import Stack from "../src/Stack.js";
 import TwoStacksOneArray  from "../src/TwoStacksOneArray.js";
 
@@ -36,10 +36,6 @@ describe("Q2. 2 pilhas, 1 array", () => {
 
     beforeEach(() => {
         s = new TwoStacksOneArray();
-    });
-
-    beforeEach(() => {
-        s = new TwoStacksOneArray(); // Cria uma nova instância antes de cada teste
     });
 
     test('deve criar duas pilhas vazias com tamanho padrão 5', () => {
@@ -255,6 +251,41 @@ describe("Q6. Expressão para RPN", () => {
         expect(shutingYard('a+b*c-d')).toBe('abc*+d-');
         expect(shutingYard('(a+b)+c/d')).toBe('ab+cd/+');
         expect(shutingYard('a*b-(c-d)+e')).toBe('ab*cd--e+');
+    });
+
+});
+
+describe("Q7. Remover duplicados", () => {
+    /*
+    Entrada: [3, 7, 3, 2, 7, 1, 4, 2]
+    Saída: [3, 7, 2, 1, 4]
+    */
+
+    beforeEach(() => {
+        s = new Stack(15);
+    });
+
+
+    test("Testes da lista", () => {
+        s.push(3);
+        s.push(7);
+        s.push(3);
+        s.push(2);
+        s.push(7);
+        s.push(1);
+        s.push(4);
+        s.push(2);
+        expect(removeDuplicates(s)).toBe('[3, 7, 2, 1, 4]');
+    });
+
+    test("Teste 2", () => {
+        s.push(2);
+        s.push(2);
+        s.push(1);
+        s.push(1);
+        s.push(3);
+        s.push(3);
+        expect(removeDuplicates(s)).toBe('[2, 1, 3]');
     });
 
 });

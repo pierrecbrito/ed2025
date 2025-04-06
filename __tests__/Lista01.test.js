@@ -311,6 +311,7 @@ describe("Q8. Stack Plate", () => {
         s.push(10);
         s.push(15);
         s.push(20);
+        expect(s.toString()).toBe('{[5, 10, 15], [20]}');
         s.pop();
         s.pop();
         expect(s.toString()).toBe('{[5, 10]}');

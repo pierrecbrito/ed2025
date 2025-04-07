@@ -1,6 +1,9 @@
 import StackWithQueues from "../src/StackWithQueues";
 import QueueWithStacks from "../src/QueueWithStacks";
 import ConcreteCompanySystem from "../src/ConcreteCompanySystem";
+import Queue from "../src/Queue";
+import { interleaveQueues, reverseQueue } from "../src/lista02";
+import Deque from "../src/Deque";
 
 describe('Q1', () => {
     let stack;
@@ -105,7 +108,6 @@ describe('Q1', () => {
         });
     });
 });
-
 
 describe("Q2", () => {
     let queue;
@@ -240,7 +242,7 @@ describe("Q2", () => {
     });
 });
 
-describe('ConcreteCompanySystem', () => {
+describe('Q3', () => {
     let system;
 
     beforeEach(() => {
@@ -398,5 +400,237 @@ describe('ConcreteCompanySystem', () => {
             expect(system.listWaitingDrivers()).toBe("Caminhoneiros aguardando: [Maria]");
             expect(system.removeTruckDriver()).toBe("Maria foi atendido e saiu com o carregamento (1/3)");
         });
+    });
+});
+
+describe('Q4', () => {
+    let queue1, queue2;
+
+    beforeEach(() => {
+        queue1 = new Queue(5);
+        queue2 = new Queue(5);
+    });
+
+    test('deve intercalar duas filas de mesmo tamanho', () => {
+        queue1.enqueue("A");
+        queue1.enqueue("B");
+        queue2.enqueue(1);
+        queue2.enqueue(2);
+        
+        const result = interleaveQueues(queue1, queue2);
+        expect(result.toString()).toBe("[A, 1, B, 2]");
+        expect(result.size()).toBe(4);
+    });
+
+    test('deve intercalar quando a primeira fila é maior', () => {
+        queue1.enqueue("A");
+        queue1.enqueue("B");
+        queue1.enqueue("C");
+        queue2.enqueue(1);
+        
+        const result = interleaveQueues(queue1, queue2);
+        expect(result.toString()).toBe("[A, 1, B, C]");
+        expect(result.size()).toBe(4);
+    });
+
+    test('deve intercalar quando a segunda fila é maior', () => {
+        queue1.enqueue("A");
+        queue2.enqueue(1);
+        queue2.enqueue(2);
+        queue2.enqueue(3);
+        
+        const result = interleaveQueues(queue1, queue2);
+        expect(result.toString()).toBe("[A, 1, 2, 3]");
+        expect(result.size()).toBe(4);
+    });
+
+    test('deve retornar fila vazia quando ambas as filas estão vazias', () => {
+        const result = interleaveQueues(queue1, queue2);
+        expect(result.toString()).toBe("[]");
+        expect(result.isEmpty()).toBe(true);
+    });
+
+    test('deve intercalar corretamente quando uma fila está vazia', () => {
+        queue1.enqueue("A");
+        queue1.enqueue("B");
+        
+        const result = interleaveQueues(queue1, queue2);
+        expect(result.toString()).toBe("[A, B]");
+        expect(result.size()).toBe(2);
+    });
+
+    test('deve manter a ordem FIFO das filas originais', () => {
+        queue1.enqueue("A");
+        queue1.enqueue("B");
+        queue2.enqueue(1);
+        queue2.enqueue(2);
+        
+        const result = interleaveQueues(queue1, queue2);
+        expect(result.dequeue()).toBe("A");
+        expect(result.dequeue()).toBe(1);
+        expect(result.dequeue()).toBe("B");
+        expect(result.dequeue()).toBe(2);
+    });
+
+    test('deve funcionar com tipos de dados mistos', () => {
+        queue1.enqueue("A");
+        queue1.enqueue(10);
+        queue2.enqueue(true);
+        queue2.enqueue("Z");
+        
+        const result = interleaveQueues(queue1, queue2);
+        expect(result.toString()).toBe("[A, true, 10, Z]");
+    });
+});
+
+describe('Q5', () => {
+    let deque;
+
+    beforeEach(() => {
+        deque = new Deque(3);
+    });
+
+    describe('constructor', () => {
+        test('deve instanciar e inicializar um deque vazio', () => {
+            expect(deque.isEmpty()).toBe(true);
+            expect(deque.size()).toBe(0);
+            expect(deque.maxSize).toBe(3);
+        });
+    });
+
+    describe('addFront', () => {
+        test('deve inserir elemento no início', () => {
+            deque.addFront(1);
+            expect(deque.toString()).toBe("[1]");
+            expect(deque.size()).toBe(1);
+        });
+
+        test('deve inserir múltiplos elementos no início', () => {
+            deque.addFront(1);
+            deque.addFront(2);
+            expect(deque.toString()).toBe("[2, 1]");
+            expect(deque.size()).toBe(2);
+        });
+
+        test('deve lançar erro ao inserir null', () => {
+            expect(() => deque.addFront(null)).toThrow("Null or undefined element");
+        });
+
+        test('deve lançar erro quando o deque está cheio', () => {
+            deque.addFront(1);
+            deque.addFront(2);
+            deque.addFront(3);
+            expect(() => deque.addFront(4)).toThrow("Deque overflow");
+        });
+    });
+
+    describe('removeFront', () => {
+        test('deve remover e retornar o elemento do início', () => {
+            deque.addFront(1);
+            deque.addFront(2);
+            expect(deque.removeFront()).toBe(2);
+            expect(deque.toString()).toBe("[1]");
+            expect(deque.size()).toBe(1);
+        });
+
+        test('deve lançar erro quando o deque está vazio', () => {
+            expect(() => deque.removeFront()).toThrow("Deque underflow");
+        });
+    });
+
+    describe('addRear', () => {
+        test('deve inserir elemento no fim', () => {
+            deque.addRear(1);
+            expect(deque.toString()).toBe("[1]");
+            expect(deque.size()).toBe(1);
+        });
+
+        test('deve inserir múltiplos elementos no fim', () => {
+            deque.addRear(1);
+            deque.addRear(2);
+            expect(deque.toString()).toBe("[1, 2]");
+            expect(deque.size()).toBe(2);
+        });
+
+        test('deve lançar erro ao inserir null', () => {
+            expect(() => deque.addRear(null)).toThrow("Null or undefined element");
+        });
+
+        test('deve lançar erro quando o deque está cheio', () => {
+            deque.addRear(1);
+            deque.addRear(2);
+            deque.addRear(3);
+            expect(() => deque.addRear(4)).toThrow("Deque overflow");
+        });
+    });
+
+    describe('removeRear', () => {
+        test('deve remover e retornar o elemento do fim', () => {
+            deque.addRear(1);
+            deque.addRear(2);
+            expect(deque.removeRear()).toBe(2);
+            expect(deque.toString()).toBe("[1]");
+            expect(deque.size()).toBe(1);
+        });
+
+        test('deve lançar erro quando o deque está vazio', () => {
+            expect(() => deque.removeRear()).toThrow("Deque underflow");
+        });
+    });
+
+    describe('operações combinadas', () => {
+        test('deve suportar inserções e remoções em ambas as extremidades', () => {
+            deque.addFront(1);
+            deque.addRear(2);
+            deque.addFront(3);
+            expect(deque.toString()).toBe("[3, 1, 2]");
+            expect(deque.removeFront()).toBe(3);
+            expect(deque.removeRear()).toBe(2);
+            expect(deque.toString()).toBe("[1]");
+        });
+    });
+});
+
+describe('Q6', () => {
+    let queue;
+
+    beforeEach(() => {
+        queue = new Queue(5);
+    });
+
+    test('deve reverter uma fila com múltiplos elementos', () => {
+        queue.enqueue(1);
+        queue.enqueue(2);
+        queue.enqueue(3);
+        const reversed = reverseQueue(queue);
+        expect(reversed.toString()).toBe('[3, 2, 1]');
+    });
+
+    test('deve reverter uma fila com um elemento', () => {
+        queue.enqueue(1);
+        const reversed = reverseQueue(queue);
+        expect(reversed.toString()).toBe('[1]');
+    });
+
+    test('deve retornar fila vazia quando a entrada está vazia', () => {
+        const reversed = reverseQueue(queue);
+        expect(reversed.toString()).toBe('[]');
+    });
+
+    test('deve manter o tamanho máximo da fila original', () => {
+        queue.enqueue(1);
+        queue.enqueue(2);
+        const reversed = reverseQueue(queue);
+        expect(reversed.limit).toBe(5);
+    });
+
+    test('deve reverter corretamente a ordem de saída', () => {
+        queue.enqueue("A");
+        queue.enqueue("B");
+        queue.enqueue("C");
+        const reversed = reverseQueue(queue);
+        expect(reversed.dequeue()).toBe("C");
+        expect(reversed.dequeue()).toBe("B");
+        expect(reversed.dequeue()).toBe("A");
     });
 });

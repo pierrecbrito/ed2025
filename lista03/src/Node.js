@@ -12,7 +12,13 @@ class Node {
         return this.next;
     }
 
+    hasNext() {
+        return this.next != undefined;
+    }
+
     toString() {
         return `Node (${this.data}) -> ${this.next ? this.next.toString() : 'END'}`;
     }
 }
+
+export default Node;

@@ -9,8 +9,8 @@ class LinkedList {
         return this.head === undefined;
     }
 
-    append(elemento) {
-        const newNode = new Node(elemento);
+    append(newELement) {
+        const newNode = new Node(newELement);
         if (this.isEmpty()) {
             this.head = newNode;
         } else {
@@ -53,11 +53,11 @@ class LinkedList {
         return count;
     }
 
-    addAt(elemento, pos) {
+    addAt(newELement, pos) {
         if (pos < 0 || pos > this.length()) {
             return false;
         }
-        const newNode = new Node(elemento);
+        const newNode = new Node(newELement);
         if (pos === 0) {
             newNode.setNext(this.head);
             this.head = newNode;

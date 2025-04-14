@@ -131,6 +131,30 @@ class LinkedList {
 
         this.head = prev;
     }
+
+    shuffle() {
+        if (this.isEmpty() || !this.head.hasNext()) {
+            return;
+        }
+
+        const nodes = [];
+        let current = this.head;
+        while (current !== undefined) {
+            nodes.push(current);
+            current = current.getNext();
+        }
+
+        for (let i = nodes.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [nodes[i], nodes[j]] = [nodes[j], nodes[i]]; 
+        }
+
+        this.head = nodes[0];
+        for (let i = 0; i < nodes.length - 1; i++) {
+            nodes[i].setNext(nodes[i + 1]);
+        }
+        nodes[nodes.length - 1].setNext(undefined);
+    }
 }
 
 export default LinkedList;

@@ -116,6 +116,21 @@ class LinkedList {
         }
         return result;
     }
+
+    reverse() {
+        let prev = undefined;
+        let current = this.head;
+        let next = undefined;
+
+        while (current !== undefined) {
+            next = current.getNext();
+            current.setNext(prev);
+            prev = current;
+            current = next;
+        }
+
+        this.head = prev;
+    }
 }
 
 export default LinkedList;

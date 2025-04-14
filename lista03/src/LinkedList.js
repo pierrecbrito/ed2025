@@ -1,63 +1,63 @@
-import Node from "./Node";
+import Node from './Node.js';
 
 class LinkedList {
     constructor() {
-        this.head = new Node();
+        this.head = undefined;
     }
 
-    append(newElement) {
+    isEmpty() {
+        return this.head === undefined;
+    }
+
+    append(elemento) {
         const newNode = new Node(elemento);
         if (this.isEmpty()) {
             this.head = newNode;
-            return;
+        } else {
+            let current = this.head;
+            while (current.hasNext()) {
+                current = current.getNext();
+            }
+            current.setNext(newNode);
         }
-        let current = this.head;
-        while (current.hasNext()) {
-            current = current.getNext();
-        }
-        current.setNext(newNode);
     }
 
     removeLast() {
-        if (!this.isEmpty()) {
-            if (!this.head.hasNext()) {
-                this.head = undefined; 
-                return;
-            }
-            let node_a = this.head;
-            let node_b = this.head.getNext();
-            while (node_b.hasNext()) {
-                node_a = node_b;
-                node_b = node_b.getNext();
-            }
-            node_a.setNext(undefined);
+        if (this.isEmpty()) {
+            return;
         }
+        if (!this.head.hasNext()) {
+            this.head = undefined;
+            return;
+        }
+        let current = this.head;
+        while (current.getNext().hasNext()) {
+            current = current.getNext();
+        }
+        current.setNext(undefined);
     }
 
     removeFirst() {
         if (!this.isEmpty()) {
-            this.head = this.head.getNext(); 
+            this.head = this.head.getNext();
         }
-    }
-    isEmpty() {
-        return this.head.getNext() === undefined;
     }
 
     length() {
-        let result = 0;
+        let count = 0;
         let current = this.head;
         while (current !== undefined) {
-            result++;
+            count++;
             current = current.getNext();
         }
-        return result;
+        return count;
     }
-    
-    addAt(newElement, pos) {
+
+    addAt(elemento, pos) {
         if (pos < 0 || pos > this.length()) {
-            return false; a
+            return false;
         }
-        const newNode = new Node(newElement);
+        const newNode = new Node(elemento);
         if (pos === 0) {
             newNode.setNext(this.head);
             this.head = newNode;
@@ -65,7 +65,6 @@ class LinkedList {
         }
         let current = this.head;
         for (let i = 0; i < pos - 1; i++) {
-            if (current === undefined) return false;
             current = current.getNext();
         }
         newNode.setNext(current.getNext());
@@ -75,7 +74,7 @@ class LinkedList {
 
     removeAt(pos) {
         if (this.isEmpty() || pos < 0 || pos >= this.length()) {
-            return false; // Lista vazia ou posição inválida
+            return false;
         }
         if (pos === 0) {
             this.head = this.head.getNext();
@@ -83,15 +82,16 @@ class LinkedList {
         }
         let current = this.head;
         for (let i = 0; i < pos - 1; i++) {
-            if (current === undefined) return false; // Não deve acontecer
             current = current.getNext();
         }
-        if (current.getNext() === undefined) return false; // Não deve acontecer
+        if (!current.getNext()) {
+            return false;
+        }
         current.setNext(current.getNext().getNext());
         return true;
-     }
+    }
 
-    search(key) { 
+    search(key) {
         let current = this.head;
         let index = 0;
         while (current !== undefined) {
@@ -103,11 +103,15 @@ class LinkedList {
         }
         return -1;
     }
+
     toString() {
+        if (this.isEmpty()) {
+            return '';
+        }
         let result = '';
         let current = this.head;
         while (current !== undefined) {
-            result += current.data;
+            result += String(current.data);
             current = current.getNext();
         }
         return result;

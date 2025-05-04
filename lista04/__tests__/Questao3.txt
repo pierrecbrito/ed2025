@@ -1,0 +1,390 @@
+Company Logo
+Visualizações de Remoções em Heap Máximo
+Para cada sequência da questão anterior, vou desenhar o processo de remoção dos elementos do heap máximo, mostrando as trocas necessárias para manter a propriedade de heap.
+
+Sequência 1: Final do heap após inserções - 98, 78, 44, 67, 1, 30
+Estado inicial após todas as inserções:
+      98
+     /  \
+    78   44
+   / \  /
+  67  1 30
+Primeira remoção (98):
+Remover 98 (raiz) e colocar o último elemento (30) na raiz:
+      30
+     /  \
+    78   44
+   / \
+  67  1
+Fazer heapify-down:
+30 < 78, então troca:
+      78
+     /  \
+    30   44
+   / \
+  67  1
+30 < 67, então troca:
+      78
+     /  \
+    67   44
+   / \
+  30  1
+Segunda remoção (78):
+Remover 78 (raiz) e colocar o último elemento (1) na raiz:
+      1
+     /  \
+    67   44
+   /
+  30
+Fazer heapify-down:
+1 < 67, então troca:
+      67
+     /  \
+    1    44
+   /
+  30
+1 < 30, então troca:
+      67
+     /  \
+    30   44
+   /
+  1
+Terceira remoção (67):
+Remover 67 (raiz) e colocar o último elemento (1) na raiz:
+      1
+     /  \
+    30   44
+Fazer heapify-down:
+1 < 44, troca com o maior filho:
+      44
+     /  \
+    30   1
+Quarta remoção (44):
+Remover 44 (raiz) e colocar o último elemento (1) na raiz:
+      1
+     /
+    30
+Fazer heapify-down:
+1 < 30, então troca:
+      30
+     /
+    1
+Quinta remoção (30):
+Remover 30 (raiz) e colocar o último elemento (1) na raiz:
+      1
+Sexta remoção (1):
+Remover 1 (raiz):
+   [Heap vazio]
+Sequência 2: Final do heap após inserções - 63, 17, 55, 12, 2, 9
+Estado inicial após todas as inserções:
+
+      63
+     /  \
+    17   55
+   / \  /
+  12  2 9
+Primeira remoção (63):
+Remover 63 (raiz) e colocar o último elemento (9) na raiz:
+      9
+     /  \
+    17   55
+   / \
+  12  2
+Fazer heapify-down:
+9 < 55, troca com o maior filho:
+      55
+     /  \
+    17   9
+   / \
+  12  2
+Segunda remoção (55):
+Remover 55 (raiz) e colocar o último elemento (2) na raiz:
+      2
+     /  \
+    17   9
+   /
+  12
+Fazer heapify-down:
+2 < 17, então troca:
+      17
+     /  \
+    2    9
+   /
+  12
+2 < 12, então troca:
+      17
+     /  \
+    12   9
+   /
+  2
+Terceira remoção (17):
+Remover 17 (raiz) e colocar o último elemento (2) na raiz:
+      2
+     /  \
+    12   9
+Fazer heapify-down:
+2 < 12, então troca:
+      12
+     /  \
+    2    9
+Quarta remoção (12):
+Remover 12 (raiz) e colocar o último elemento (9) na raiz:
+      9
+     /
+    2
+Quinta remoção (9):
+Remover 9 (raiz) e colocar o último elemento (2) na raiz:
+      2
+Sexta remoção (2):
+Remover 2 (raiz):
+   [Heap vazio]
+Sequência 3: Final do heap após inserções - 95, 44, 32, 7, 28, 13
+Estado inicial após todas as inserções:
+
+      95
+     /  \
+    44   32
+   / \  /
+  7  28 13
+Primeira remoção (95):
+Remover 95 (raiz) e colocar o último elemento (13) na raiz:
+      13
+     /  \
+    44   32
+   / \
+  7  28
+Fazer heapify-down:
+13 < 44, então troca:
+      44
+     /  \
+    13   32
+   / \
+  7  28
+13 < 28, então troca:
+      44
+     /  \
+    28   32
+   / \
+  7  13
+Segunda remoção (44):
+Remover 44 (raiz) e colocar o último elemento (13) na raiz:
+      13
+     /  \
+    28   32
+   /
+  7
+Fazer heapify-down:
+13 < 32, troca com o maior filho:
+      32
+     /  \
+    28   13
+   /
+  7
+Terceira remoção (32):
+Remover 32 (raiz) e colocar o último elemento (7) na raiz:
+      7
+     /  \
+    28   13
+Fazer heapify-down:
+7 < 28, então troca:
+      28
+     /  \
+    7    13
+Quarta remoção (28):
+Remover 28 (raiz) e colocar o último elemento (13) na raiz:
+      13
+     /
+    7
+Quinta remoção (13):
+Remover 13 (raiz) e colocar o último elemento (7) na raiz:
+      7
+Sexta remoção (7):
+Remover 7 (raiz):
+   [Heap vazio]
+Sequência 4: Final do heap após inserções - 90, 53, 64, 21, 1, 41
+Estado inicial após todas as inserções:
+
+      90
+     /  \
+    53   64
+   / \  /
+  21  1 41
+Primeira remoção (90):
+Remover 90 (raiz) e colocar o último elemento (41) na raiz:
+      41
+     /  \
+    53   64
+   / \
+  21  1
+Fazer heapify-down:
+41 < 64, troca com o maior filho:
+      64
+     /  \
+    53   41
+   / \
+  21  1
+Segunda remoção (64):
+Remover 64 (raiz) e colocar o último elemento (1) na raiz:
+      1
+     /  \
+    53   41
+   /
+  21
+Fazer heapify-down:
+1 < 53, então troca:
+      53
+     /  \
+    1    41
+   /
+  21
+1 < 21, então troca:
+      53
+     /  \
+    21   41
+   /
+  1
+Terceira remoção (53):
+Remover 53 (raiz) e colocar o último elemento (1) na raiz:
+      1
+     /  \
+    21   41
+Fazer heapify-down:
+1 < 41, troca com o maior filho:
+      41
+     /  \
+    21   1
+Quarta remoção (41):
+Remover 41 (raiz) e colocar o último elemento (1) na raiz:
+      1
+     /
+    21
+Fazer heapify-down:
+1 < 21, então troca:
+      21
+     /
+    1
+Quinta remoção (21):
+Remover 21 (raiz) e colocar o último elemento (1) na raiz:
+      1
+Sexta remoção (1):
+Remover 1 (raiz):
+   [Heap vazio]
+Sequência 5: Final do heap após inserções - 99, 27, 77, 19, 2, 37
+Estado inicial após todas as inserções:
+
+      99
+     /  \
+    27   77
+   / \  /
+  19  2 37
+Primeira remoção (99):
+Remover 99 (raiz) e colocar o último elemento (37) na raiz:
+      37
+     /  \
+    27   77
+   / \
+  19  2
+Fazer heapify-down:
+37 < 77, troca com o maior filho:
+      77
+     /  \
+    27   37
+   / \
+  19  2
+Segunda remoção (77):
+Remover 77 (raiz) e colocar o último elemento (2) na raiz:
+      2
+     /  \
+    27   37
+   /
+  19
+Fazer heapify-down:
+2 < 37, troca com o maior filho:
+      37
+     /  \
+    27   2
+   /
+  19
+Terceira remoção (37):
+Remover 37 (raiz) e colocar o último elemento (19) na raiz:
+      19
+     /  \
+    27   2
+Fazer heapify-down:
+19 < 27, então troca:
+      27
+     /  \
+    19   2
+Quarta remoção (27):
+Remover 27 (raiz) e colocar o último elemento (2) na raiz:
+      2
+     /
+    19
+Fazer heapify-down:
+2 < 19, então troca:
+      19
+     /
+    2
+Quinta remoção (19):
+Remover 19 (raiz) e colocar o último elemento (2) na raiz:
+      2
+Sexta remoção (2):
+Remover 2 (raiz):
+   [Heap vazio]
+Sequência 6: Final do heap após inserções - 101, 44, 67, 8, 29, 13
+Estado inicial após todas as inserções:
+
+      101
+     /  \
+    44   67
+   / \  /
+  8  29 13
+Primeira remoção (101):
+Remover 101 (raiz) e colocar o último elemento (13) na raiz:
+      13
+     /  \
+    44   67
+   / \
+  8  29
+Fazer heapify-down:
+13 < 67, troca com o maior filho:
+      67
+     /  \
+    44   13
+   / \
+  8  29
+Segunda remoção (67):
+Remover 67 (raiz) e colocar o último elemento (29) na raiz:
+      29
+     /  \
+    44   13
+   /
+  8
+Fazer heapify-down:
+29 < 44, então troca:
+      44
+     /  \
+    29   13
+   /
+  8
+Terceira remoção (44):
+Remover 44 (raiz) e colocar o último elemento (8) na raiz:
+      8
+     /  \
+    29   13
+Fazer heapify-down:
+8 < 29, então troca:
+      29
+     /  \
+    8    13
+Quarta remoção (29):
+Remover 29 (raiz) e colocar o último elemento (13) na raiz:
+      13
+     /
+    8
+Quinta remoção (13):
+Remover 13 (raiz) e colocar o último elemento (8) na raiz:
+      8
+Sexta remoção (8):
+Remover 8 (raiz):
+   [Heap vazio]

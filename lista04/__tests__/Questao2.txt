@@ -1,0 +1,334 @@
+Sequência 1: 44, 98, 78, 1, 67, 30
+Inserção do 44:
+   44
+Inserção do 98:
+   98
+  /
+44
+Troca necessária (44 < 98):
+   98
+  /
+44
+Inserção do 78:
+    98
+   /  \
+  44  78
+Troca necessária (44 < 78):
+
+    98
+   /  \
+  78  44
+Inserção do 1:
+      98
+     /  \
+    78   44
+   /
+  1
+Não são necessárias trocas.
+
+Inserção do 67:
+      98
+     /  \
+    78   44
+   / \
+  1  67
+Troca necessária (1 < 67):
+
+      98
+     /  \
+    78   44
+   / \
+  67  1
+Inserção do 30:
+      98
+     /  \
+    78   44
+   / \  /
+  67  1 30
+Não são necessárias trocas.
+
+Sequência 2: 12, 55, 63, 17, 2, 9
+Inserção do 12:
+   12
+Inserção do 55:
+   55
+  /
+ 12
+Troca necessária (12 < 55):
+
+   55
+  /
+ 12
+Inserção do 63:
+    55
+   /  \
+  12  63
+Troca necessária (55 < 63):
+
+    63
+   /  \
+  12  55
+Inserção do 17:
+      63
+     /  \
+    17  55
+   /
+  12
+Troca necessária (12 < 17):
+
+      63
+     /  \
+    17  55
+   /
+  12
+Inserção do 2:
+      63
+     /  \
+    17  55
+   / \
+  12  2
+Não são necessárias trocas.
+
+Inserção do 9:
+      63
+     /  \
+    17  55
+   / \  /
+  12  2 9
+Não são necessárias trocas.
+
+Sequência 3: 7, 95, 32, 44, 28, 13
+Inserção do 7:
+   7
+Inserção do 95:
+   95
+  /
+ 7
+Troca necessária (7 < 95):
+
+   95
+  /
+ 7
+Inserção do 32:
+    95
+   /  \
+  7   32
+Não são necessárias trocas.
+
+Inserção do 44:
+      95
+     /  \
+    44   32
+   /
+  7
+Troca necessária (7 < 44):
+
+      95
+     /  \
+    44   32
+   /
+  7
+Inserção do 28:
+      95
+     /  \
+    44   32
+   / \
+  7  28
+Não são necessárias trocas.
+
+Inserção do 13:
+      95
+     /  \
+    44   32
+   / \  /
+  7  28 13
+Não são necessárias trocas.
+
+Sequência 4: 21, 41, 53, 64, 1, 90
+Inserção do 21:
+   21
+Inserção do 41:
+   41
+  /
+ 21
+Troca necessária (21 < 41):
+
+   41
+  /
+ 21
+Inserção do 53:
+    41
+   /  \
+  21  53
+Troca necessária (41 < 53):
+
+    53
+   /  \
+  21  41
+Inserção do 64:
+      53
+     /  \
+    64   41
+   /
+  21
+Troca necessária (21 < 64):
+
+      53
+     /  \
+    64   41
+   /
+  21
+Troca necessária (53 < 64):
+
+      64
+     /  \
+    53   41
+   /
+  21
+Inserção do 1:
+      64
+     /  \
+    53   41
+   / \
+  21  1
+Não são necessárias trocas.
+
+Inserção do 90:
+      64
+     /  \
+    53   90
+   / \  /
+  21  1 41
+Troca necessária (41 < 90):
+
+      64
+     /  \
+    53   90
+   / \  /
+  21  1 41
+Troca necessária (64 < 90):
+
+      90
+     /  \
+    53   64
+   / \  /
+  21  1 41
+Sequência 5: 77, 19, 37, 27, 2, 99
+Inserção do 77:
+   77
+Inserção do 19:
+   77
+  /
+ 19
+Não são necessárias trocas.
+
+Inserção do 37:
+    77
+   /  \
+  19  37
+Não são necessárias trocas.
+
+Inserção do 27:
+      77
+     /  \
+    27   37
+   /
+  19
+Troca necessária (19 < 27):
+
+      77
+     /  \
+    27   37
+   /
+  19
+Inserção do 2:
+      77
+     /  \
+    27   37
+   / \
+  19  2
+Não são necessárias trocas.
+
+Inserção do 99:
+      77
+     /  \
+    27   99
+   / \  /
+  19  2 37
+Troca necessária (37 < 99):
+
+      77
+     /  \
+    27   99
+   / \  /
+  19  2 37
+Troca necessária (77 < 99):
+
+      99
+     /  \
+    27   77
+   / \  /
+  19  2 37
+Sequência 6: 13, 8, 29, 101, 44, 67
+Inserção do 13:
+   13
+Inserção do 8:
+   13
+  /
+ 8
+Não são necessárias trocas.
+
+Inserção do 29:
+    13
+   /  \
+  8   29
+Troca necessária (13 < 29):
+
+    29
+   /  \
+  8   13
+Inserção do 101:
+      29
+     /  \
+    101  13
+   /
+  8
+Troca necessária (8 < 101):
+
+      29
+     /  \
+    101  13
+   /
+  8
+Troca necessária (29 < 101):
+
+      101
+     /  \
+    29   13
+   /
+  8
+Inserção do 44:
+      101
+     /  \
+    44   13
+   / \
+  8  29
+Troca necessária (29 < 44):
+
+      101
+     /  \
+    44   13
+   / \
+  8  29
+Inserção do 67:
+      101
+     /  \
+    44   67
+   / \  /
+  8  29 13
+Troca necessária (13 < 67):
+      101
+     /  \
+    44   67
+   / \  /
+  8  29 13

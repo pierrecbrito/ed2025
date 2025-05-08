@@ -1,7 +1,3 @@
-Company Logo
-Visualizações de Remoções em Heap Máximo
-Para cada sequência da questão anterior, vou desenhar o processo de remoção dos elementos do heap máximo, mostrando as trocas necessárias para manter a propriedade de heap.
-
 Sequência 1: Final do heap após inserções - 98, 78, 44, 67, 1, 30
 Estado inicial após todas as inserções:
       98
